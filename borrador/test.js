@@ -20,8 +20,12 @@ var ooo = create2(o);
 echo(oo == ooo);
 echo(oo === ooo);
 
-function test() {
-	var message = 'hola'; //local variable
-}
-test();
-alert(message); //error!
+
+(function () {
+	'use strict';
+	function test() {
+		message = 'hola'; //local variable
+	}
+	test();
+	alert(message); //error!
+} ());
