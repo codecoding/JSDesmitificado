@@ -1,4 +1,4 @@
-/// <reference path="typings/node/node.d.ts"/>
+/// <reference path="../typings/node/node.d.ts"/>
 'use strict';
 var utils = require('./utils'),
 	echo = utils.echo;
@@ -19,3 +19,9 @@ var ooo = create2(o);
 
 echo(oo == ooo);
 echo(oo === ooo);
+
+function test() {
+	var message = 'hola'; //local variable
+}
+test();
+alert(message); //error!

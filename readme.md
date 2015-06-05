@@ -1,5 +1,5 @@
-#Tokiota JS
-This is just random material used for a JS course.
+#JS Desmitificado
+Random material used for a JS course.
 
 #TODO
 1. npm init.
