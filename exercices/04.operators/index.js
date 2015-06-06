@@ -101,3 +101,7 @@ NaN >= 3; //false
 //equality
 '55' == 55; //true - equal because of conversion
 '55' === 55; //false - not equal because different data types
+
+//conditional
+true ? 1 : 2;  //1
+false ? 1 : 2; //2
