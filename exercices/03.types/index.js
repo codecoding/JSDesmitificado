@@ -52,6 +52,7 @@ NaN*10; //NaN
 NaN == NaN; //false
 isNaN(NaN); //true
 isNaN('blue'); //true
+0/0; //NaN
 
 //casting
 var num1 = Number('Hello world!'); //NaN
