@@ -4,12 +4,12 @@ var now = new Date();
 var error = new Error("Something bad happened.");
 var func = new Function("console.log('Hi');");
 var obj = new Object();
-var re = new RegExp("\\d+");
+var re = new RegExp('\\d+');
 
 //literal form
 var items = [];
 var obj = {};
-var re = /+d/;
+var re = /d+/;
 var func = function func() { console.log('Hi'); };
 
 //dynamic properties 
