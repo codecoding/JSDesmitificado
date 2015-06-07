@@ -69,18 +69,88 @@ o.getGame = getGame;
 o.getGame(); //shinobi
 
 //another example
-function sayNameForAll() {
-	console.log(this.name);
+function getTitle() {
+	console.log(this.title);
 }
-var person1 = {
-	name: 'Nicholas',
-	sayName: sayNameForAll
+var game1 = {
+	title: 'Pole Position',
+	getTitle: getTitle
 };
-var person2 = {
-	name: 'Greg',
-	sayName: sayNameForAll
+var game2 = {
+	title: 'Arkanoid',
+	getTitle: getTitle
 };
-var name = 'Michael';
-person1.sayName(); // outputs 'Nicholas'
-person2.sayName(); // outputs 'Greg'
-sayNameForAll(); // outputs 'Michael'
+var title = 'Super Sprint';
+game1.getTitle(); // Pole Position
+game2.getTitle(); // Arkanoid
+getTitle(); // Super Sprint | if in strict mode: undefined
+
+//call
+var title = 'Super Sprint';
+function getTitle(caller) { console.log(caller + ':' + this.title); }
+var game1 = { title: 'Pole Position' };
+var game2 = { title: 'Arkanoid' };
+
+getTitle.call(game1, 'game1'); // game1 : Pole Position
+getTitle.call(game2, 'game2'); // game2 : Arkanoid
+getTitle.call(this, 'Global'); //Global : Super Sprint 
+
+//En strict mode => Global, error: this is undefined.
+(function(){
+   'use strict';
+	var title = 'Super Sprint';
+	function getTitle(caller) { console.log(caller + ':' + this.title); }
+	var game1 = { title: 'Pole Position' };
+	var game2 = { title: 'Arkanoid' };
+	
+	getTitle.call(game1, 'game1'); // game1 : Pole Position
+	getTitle.call(game2, 'game2'); // game2 : Arkanoid
+	getTitle.call(this, 'Global'); //Global : Super Sprint 
+	//En strict mode => this with no context is undefined, not window.
+}());
+
+//apply
+var title = 'Super Sprint';
+function getTitle(caller) { console.log(caller + ':' + this.title); }
+var game1 = { title: 'Pole Position' };
+var game2 = { title: 'Arkanoid' };
+
+getTitle.apply(game1, ['game1']); // game1 : Pole Position
+getTitle.apply(game2, ['game2']); // game2 : Arkanoid
+getTitle.apply(this, ['Global']); //Global : Super Sprint 
+
+//apply & arguments example
+function superGamer(label){
+	this.title='Phoenix';
+	getTitle.apply(this, arguments);
+}
+superGamer('SuperGamer');
+
+//bind
+function Point(x, y) {
+  this.x = x;
+  this.y = y;
+}
+var o = {};
+var p = Point.bind(o, 0/*x*/);
+p(13);
+console.dir(o); //x:0, y:13
+
+//bind & new
+function Point(x, y) {
+  this.x = x;
+  this.y = y;
+}
+var p = Point.bind(null, 0/*x*/);
+var oo = new p(13);
+console.dir(oo); //x:0, y:13
+
+//bind example
+function getTitle(caller) { console.log(caller + ':' + this.title); }
+var game1 = { title: 'Pole Position' };
+var game2 = { title: 'Arkanoid' };
+var getGame1Title = getTitle.bind(game1);
+var getGame2Title = getTitle.bind(game2, 'game2');
+
+getGame1Title('game1'); //game1: Pole Position
+getGame2Title(); //game2: Arkanoid
