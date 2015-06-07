@@ -159,3 +159,13 @@ function Game(title, year) {
 }
 
 var game = Game('Karate Chan', 1988);
+
+
+//scope safe constructors
+function Person(name) {
+	if (this instanceof Person) {
+		// called with "new"
+	} else {
+		// called without "new"
+	}
+}
