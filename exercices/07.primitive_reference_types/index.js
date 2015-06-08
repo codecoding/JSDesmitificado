@@ -16,11 +16,11 @@ var func = function func() { console.log('Hi'); };
 //for reference types
 var person = new Object();
 person.name = 'Rob';
-console.log(name);
+console.log(person.name);
 //primitive types
 var name = 'Rob';
 name.age = 38;
-console.log(age); //undefined.
+console.log(name.age); //undefined.
 
 //primitive wrappers
 var s = 'hello';

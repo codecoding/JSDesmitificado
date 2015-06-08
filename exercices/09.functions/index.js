@@ -223,7 +223,7 @@ var game = {
 		};
 	}
 };
-game.getTitle(); // Bubble Booble
+game.getTitle()(); // Bubble Booble
 
 //fixing this assignation
 var title = 'Bubble Bobble';
@@ -236,7 +236,7 @@ var game = {
 		};
 	}
 };
-game.getTitle(); // Bubble Booble
+game.getTitle()(); // Bubble Booble
 
 //memory leaks in IE <= 8
 function assignHandler() {
