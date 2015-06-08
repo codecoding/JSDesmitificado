@@ -1,5 +1,5 @@
 #JS Desmitificado
-Random material used for a JS intensive course.
+Collection of random code for educational purposes.
 
 #TODO
 1. npm init.
