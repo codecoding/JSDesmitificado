@@ -7,3 +7,11 @@ function curry(fn) {
 		return fn.apply(null, finalArgs);
 	};
 }
+
+//throttle
+function throttle(method, context) {
+	clearTimeout(method.tId);
+	method.tId = setTimeout(function () {
+		method.call(context);
+	}, 1000);
+}
